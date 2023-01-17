@@ -84,7 +84,7 @@ function printServer(printer: Printer, service: RPCDescriptor) {
 
 function printClient(printer: Printer, service: RPCDescriptor) {
   printer.printLn(`export class ${service.name}Client extends grpc.Client {`);
-  printer.printIndentedLn("constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);");
+  printer.printIndentedLn("constructor(address: string, credentials: grpc.ChannelCredentials, options?: grpc.ClientOptions);");
   service.methods
     .forEach(method => {
       if (!method.requestStream && !method.responseStream) {
